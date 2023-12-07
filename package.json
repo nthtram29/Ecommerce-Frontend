@@ -61,6 +61,6 @@
       "localhost",
       ".localhost"
     ],
-    "proxy": "ecommerce-backend-eight-liart.vercel.app"
+    "proxy": "http://localhost:3001"
   }
 }
