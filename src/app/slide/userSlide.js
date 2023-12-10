@@ -9,7 +9,8 @@ const initialState ={
     avatar: '',
     access_token: '',
     id: '',
-    isAdmin: false
+    isAdmin: false,  
+    refreshToken: ''
 }
 export const userSlide = createSlice({
     name: 'user',
