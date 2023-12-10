@@ -56,7 +56,10 @@
       "last 1 safari version"
     ]
   },
- 
+  
+  "options": {
     "proxy": "https://ecommerce-backend-r6r6.onrender.com"
+  }
+ 
   
 }
