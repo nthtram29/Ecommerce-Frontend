@@ -39,6 +39,7 @@ export const userSlide = createSlice({
             state.id = '';
             state.access_token = '';
             state.isAdmin = false;
+            state.refreshToken = ''
             // state.access_token = false;
 
             
