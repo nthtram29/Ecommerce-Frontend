@@ -69,14 +69,13 @@ const PaymentPage = () => {
   const priceDiscountMemo = useMemo(() => {
     const result = order?.orderItemsSelected?.reduce((total, cur) => {
       const totalDiscount = cur.discount ? cur.discount : 0
-      return total + (priceMemo * (totalDiscount  * cur.amount) / 100)
+      return total + (cur.price * cur.amount  * totalDiscount  / 100)
     },0)
     if(Number(result)){
       return result
     }
     return 0
   },[order])
-
 
   
   const diliveryPriceMemo = useMemo(() => {
@@ -111,7 +110,8 @@ const PaymentPage = () => {
             shippingPrice: diliveryPriceMemo , 
             totalPrice: totalPriceMemo,
             user: user?.id,
-            email: user?.email
+            email: user?.email,
+            discountPrice: priceDiscountMemo,
           }
         )
       }
@@ -193,7 +193,8 @@ const PaymentPage = () => {
         user: user?.id,
         isPaid :true,
         paidAt: details.update_time, 
-        email: user?.email
+        email: user?.email,
+        discountPrice: priceDiscountMemo,
       }
     )
   }
@@ -308,37 +309,7 @@ const PaymentPage = () => {
                    </div>
                 </WrapperTotal>
               </div>
-              {/* {payment === 'vnpay' ? (
-                <ButtonComponent 
-                
-                onClick={()=>createPaymentVnpay()}
-                size={40}
-                  styleButton={{
-                      background: 'rgb(77, 77, 77)',
-                      height: '48px',
-                      width: '320px',
-                      border: 'none',
-                      borderRadius: '4px',
-                      margin: '0 auto'
-                  }}
-                  textButton={'Thanh toán vnpay'}
-                  styleTextButton={{ color: '#fff', fontSize: '15px', fontWeight: '700' }}></ButtonComponent>
-              ) : (
-                <ButtonComponent
-                  onClick={() => handleAddOrder()}
-                  size={40}
-                  styleButton={{
-                      background: 'rgb(77, 77, 77)',
-                      height: '48px',
-                      width: '320px',
-                      border: 'none',
-                      borderRadius: '4px',
-                      margin: '0 auto'
-                  }}
-                  textButton={'Đặt hàng'}
-                  styleTextButton={{ color: '#fff', fontSize: '15px', fontWeight: '700' }}
-              ></ButtonComponent>
-               )} */}
+             
               {payment === 'paypal' && sdkReady ? (
                 <div style={{width: '320px'}}>
                   <PayPalButton

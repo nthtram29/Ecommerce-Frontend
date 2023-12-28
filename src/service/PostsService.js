@@ -40,3 +40,12 @@ export const deleteManyPosts = async (data, access_token) => {
     return res.data
 }
 
+export const updatePost = async (id, access_token, data) => {
+    const res = await axiosJWT.put(`${process.env.REACT_APP_API_URL}/posts/update/${id}`, data, {
+        headers: {
+            token: `Bearer ${access_token}`,
+        }
+    })
+    return res.data
+}
+

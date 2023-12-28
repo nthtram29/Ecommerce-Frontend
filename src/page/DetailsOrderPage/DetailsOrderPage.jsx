@@ -104,12 +104,14 @@ const DetailsOrderPage = () => {
           })}
           <WrapperAllPrice>
             <div>Tạm tính</div>
+            <div>Giảm giá</div>
             <div>Phí vận chuyển</div>
             <div>Tổng cộng</div>
             
           </WrapperAllPrice>
           <WrapperAllPrice>
           <WrapperItemPrice>{convertPrice(priceMemo)}</WrapperItemPrice>
+          <WrapperItemPrice>{ 0  || convertPrice(data?.discountPrice)}</WrapperItemPrice>
             <WrapperItemPrice>{convertPrice(data?.shippingPrice)}</WrapperItemPrice>
             <WrapperItemPrice>{convertPrice(data?.totalPrice)}</WrapperItemPrice>
             

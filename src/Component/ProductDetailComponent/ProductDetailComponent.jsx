@@ -247,6 +247,7 @@ const ProductDetailComponent = ({idProduct}) => {
                         countInstock: productDetails?.countInStock
                     }
                 }))
+                message.success('Đã thêm vào giỏ hàng')
             } else {
                 setErrorLimitOrder(true)
             }

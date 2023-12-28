@@ -53,7 +53,21 @@ const AdminPosts = () => {
       return res
     }
   )
-
+  const mutationUpdate = useMutationHooks(
+    (data) => {
+      const {
+       id,
+       token,
+       ...rests
+      } = data
+      const res = PostsService.updatePost(
+        id,
+        token,
+        {...rests}
+      )
+      return res
+    }
+  )
 
   const mutationDeleted = useMutationHooks(
     (data) => {
@@ -137,6 +151,7 @@ const AdminPosts = () => {
   const {data, isLoading, isSuccess, isError}  = mutation
 
   const {data: dataDeleted, isLoading: isLoadingDeleted, isSuccess: isSuccessDeleted, isError: isErrorDeleted}  = mutationDeleted
+  const {data: dataUpdated, isLoading: isLoadingUpdated, isSuccess: isSuccessUpdated, isError: isErrorUpdated}  = mutationUpdate
   const {data: dataDeletedMany, isLoading: isLoadingDeletedMany, isSuccess: isSuccessDeletedMany, isError: isErrorDeletedMany}  = mutationDeletedMany
 
 
@@ -290,6 +305,15 @@ const dataTable = postss?.data?.length && postss?.data?.map((posts) =>{
 
  
 
+  useEffect(() =>{
+    if(isSuccessUpdated && dataUpdated?.status === 'OK'){
+      message.success()
+      hanldeCloseDrawer()
+    }else if(isErrorUpdated){
+      message.error()
+    }
+  }, [isSuccessUpdated])
+
   const hanldeCancelDelete =() =>{
     setIsModalOpenDelete(false)
   }
@@ -365,7 +389,13 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
   })
 
 }
-
+const onUpdateProduct = () =>{
+  mutationUpdate.mutate({id: rowSelected, token: user?.access_token, ...statePostsDetails }, {
+    onSettled: () =>{
+      queryPosts.refetch()
+    }
+  })
+}
 
 
   return (
@@ -413,7 +443,7 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
               form = {form}
             >
               <Form.Item
-                label="Title"
+                label="Tiêu đề"
                 name="title"
                 rules={[
                   {
@@ -426,7 +456,7 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
               </Form.Item>
 
               <Form.Item
-                label="Preview"
+                label="Giới thiệu"
                 name="preview"
                 rules={[
                   {
@@ -440,7 +470,7 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
               </Form.Item>
               
               <Form.Item
-                label="Description"
+                label="Bài viết"
                 name="description"
                 rules={[
                   {
@@ -503,17 +533,17 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
                 span: 20,
               }}
               style={{
-                maxWidth: 600,
+                maxWidth: 700,
               }}
               initialValues={{
                 remember: true,
               }}
-              
+              onFinish={onUpdateProduct}
               autoComplete="on"
               form = {form} 
             >
               <Form.Item
-                label="Title"
+                label="Tiêu đề"
                 name="title"
                 rules={[
                   {
@@ -522,13 +552,14 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
                   },
                 ]}
               >
-                <span>{statePostsDetails.title} </span>
-                {/* <InputComponent style={{border: '1px solid #ccc'}} value={statePostsDetails.title} onChange={handleOnChangeDetails} name='title'/> */}
+                {/* <span>{statePostsDetails.title} </span> */}
+                
+                <InputComponent style={{border: '1px solid #ccc'}} value={statePostsDetails.title} onChange={handleOnChangeDetails} name='title'/>
               </Form.Item>
 
               
               <Form.Item
-                label="Preview"
+                label="Giới thiệu"
                 name="preview"
                 rules={[
                   {
@@ -537,12 +568,12 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
                   },
                 ]}
               >
-                <span>{statePostsDetails.preview}</span>
-                
+                {/* <span>{statePostsDetails.preview}</span> */}
+                <textarea style={{width: '100%', color: '#686161', fontSize: '14px', lineHeight: 1.5, border: '1px solid #ccc', borderRadius: '5px'}} value={statePostsDetails.preview} onChange={handleOnChangeDetails} name="preview"> </textarea>
               </Form.Item>
              
               <Form.Item
-                label="Description"
+                label="Bài viết"
                 name="description"
                 rules={[
                   {
@@ -551,7 +582,9 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
                   },
                 ]}
               >
-                 <span>{statePostsDetails.description}</span>
+                 {/* <span>{statePostsDetails.description}</span> */}
+                <textarea style={{width: '100%', color: '#686161', fontSize: '14px', lineHeight: 1.5, border: '1px solid #ccc', borderRadius: '5px'}} value={statePostsDetails.description} onChange={handleOnChangeDetails} name="description"> </textarea>
+
                 {/* <InputComponent style={{border: '1px solid #ccc'}} value={statePostsDetails.description} onChange={handleOnChangeDetails} name="description"/> */}
               </Form.Item>
 
@@ -565,8 +598,8 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
                   },
                 ]}
               >
-                 <WrapperUploadFile  maxCount={1}>
-                            
+                 <WrapperUploadFile onChange={handleOnchangeAvatarDetails}  maxCount={1}>
+                 <Button style={{marginRight: '20px'}}>Select File</Button>   
                         
                         {statePostsDetails?.image && (
                             <img src={statePostsDetails?.image} style={{
@@ -585,7 +618,9 @@ const handleOnchangeAvatarDetails = async ({fileList}) => {
                   span: 16,
                 }}
               >
-                
+                <Button type="primary" htmlType="submit">
+                  Sửa
+                </Button>
               </Form.Item>
           </Form>
           </Loading>

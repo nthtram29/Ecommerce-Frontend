@@ -107,7 +107,7 @@ const OrderPage = () => {
   const priceDiscountMemo = useMemo(() => {
     const result = order?.orderItemsSelected?.reduce((total, cur) => {
       const totalDiscount = cur.discount ? cur.discount : 0
-      return total + (priceMemo * (totalDiscount  * cur.amount) / 100)
+      return total + (cur.price * cur.amount  * totalDiscount  / 100)
     },0)
     if(Number(result)){
       return result
@@ -292,7 +292,7 @@ const OrderPage = () => {
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 10px' }}>
                   <span>Giảm giá</span>
                   <span style={{ color: '#000', fontSize: '14px', fontWeight: 'bold' }}>{convertPrice(priceDiscountMemo)}</span>
-                  {/* {convertPrice(priceDiscountMemo)} */}
+                
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' , padding: '5px 10px'}}>
                   <span>Phí giao hàng</span>
