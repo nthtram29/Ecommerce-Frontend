@@ -523,7 +523,7 @@ const onUpdateProduct = () =>{
           </Loading>
         </ModalComponent>
         <DrawerComponent title='Chi tiết bài viết' isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} width ='70%'>
-        <Loading isLoading={isLoadingUpdate }>
+        <Loading isLoading={isLoadingUpdate || isLoadingUpdated }>
           <Form
               name="basic"
               labelCol={{
