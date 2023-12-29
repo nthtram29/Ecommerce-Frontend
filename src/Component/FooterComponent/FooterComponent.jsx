@@ -30,7 +30,7 @@ const FooterComponent = () => {
           
             <Col span={6}>
                     <h3 style={{textDecoration: 'underline'}}>KẾT NỐI VỚI CHÚNG TÔI</h3>
-                    <div style={{display: 'flex', justifyContent: 'flex-start'}}>
+                    <div style={{display: 'flex', justifyContent: 'flex-start', cursor: 'pointer'}}>
                     <FacebookFilled style={{fontSize: '40px', color: '#0f2ea5', marginRight: '10px'}}/>
                     <InstagramFilled style={{fontSize: '40px', color: '#cb603e', marginRight: '10px'}}/>
                     <YoutubeFilled style={{fontSize: '40px', color: '#ff002d', marginRight: '10px'}}/>
@@ -57,11 +57,6 @@ const FooterComponent = () => {
             </Col>
             <Col span={6}>
                     <h3 style={{textDecoration: 'underline', textAlign: 'center'}}>ĐĂNG KÝ NHẬN THÔNG TIN</h3>
-                    {/* <p>Tại sao nên chọn bạc cao cấp?</p>
-                    <p>Cách làm trắng bạc tại nhà</p>
-                    <p>Phân biệt các loại bạc S925, S999,...</p>
-                    <p>Những tác dụng của bạc</p>
-                    <p>Cách bảo quản trang sức bạc</p> */}
                     <getresponse-form form-id="ae367448-138f-4ff9-b0e5-22761d96fcde" e="1"></getresponse-form>
             </Col>
         </Row>
