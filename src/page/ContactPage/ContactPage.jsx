@@ -101,39 +101,9 @@ const ContactPage = () => {
           <div style={{textAlign: 'center', width: '600px', margin: '0 auto'}}>
             <p style={{fontSize: '18px',fontWeight: 500, textDecoration: 'underline', textAlign: 'center'}}>Liên hệ với chúng tôi</p>
             
-          {/* <InputComponent style={{margin: '10px 0', height: '40px'}}
-           placeholder = {'Họ tên...'} 
-          />
-          <Row >
-            <Col span={12} >
-                <InputComponent style={{margin: '10px 0', height: '40px'}}
-                 placeholder = {'Email...'} 
-                />
-            </Col>
-            <Col span={12}>
-                <InputComponent style={{margin: '10px 0', height: '40px'}}
-                placeholder = {'SĐT...'} 
-                />
-            </Col>
-          </Row>
-          <InputComponent style={{margin: '10px 0', height: '40px'}}
-           placeholder = {'Nội dung...'} 
-          />
-          <ButtonComponent
-                                size={40}
-                                styleButton={{
-                                    background: 'black',
-                                    height: '48px',
-                                    width: '100%',
-                                    border: 'none',
-                                    borderRadius: '4px'
-                                }}
-                                
-                                textButton={'Gửi thông tin'}
-                                styleTextButton={{ color: '#fff', fontSize: '15px', fontWeight: '700' }}
-                            ></ButtonComponent> */}
-                             <getresponse-form form-id="ac29cb7e-ebde-499d-94ad-84dc8ff157ca" e="1"></getresponse-form>
-                             {/* <getresponse-form form-id="4d4575e0-d7db-430a-832f-ebf9d69611dc" e="1"></getresponse-form> */}
+         
+                             {/* <getresponse-form form-id="ac29cb7e-ebde-499d-94ad-84dc8ff157ca" e="1"></getresponse-form> */}
+                             <getresponse-form form-id="05a2beda-2c7a-4a2d-9337-e6d00bd32b87" e="1"></getresponse-form>
          </div>
          
  </div>
