@@ -57,7 +57,8 @@ const FooterComponent = () => {
             </Col>
             <Col span={6}>
                     <h3 style={{textDecoration: 'underline', textAlign: 'center'}}>ĐĂNG KÝ NHẬN THÔNG TIN</h3>
-                    <getresponse-form form-id="ae367448-138f-4ff9-b0e5-22761d96fcde" e="1"></getresponse-form>
+                    {/* <getresponse-form form-id="ae367448-138f-4ff9-b0e5-22761d96fcde" e="1"></getresponse-form> */}
+                    <getresponse-form form-id="546914d7-a4a4-465b-9e76-a0dadd16f9ca" e="1"></getresponse-form>
             </Col>
         </Row>
     </div>
