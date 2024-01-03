@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import * as OrderService from '../../service/OrderService'
 import { useQuery } from '@tanstack/react-query'
 import Loading from '../../Component/LoadingComponent/Loading'
@@ -9,7 +9,7 @@ import { orderContant } from '../../contant'
 import Helmet from '../../Component/Helmet/Helmet'
 
 const DetailsOrderPage = () => {
-
+  const navigate = useNavigate()
     const params = useParams()
     const location = useLocation()
     const { state } = location
@@ -39,7 +39,8 @@ const DetailsOrderPage = () => {
 
      <div style={{width: '100%', height: '100%', background: `rgb(255,253,255)`, background: `linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 98%, rgba(247,244,244,1) 99%, rgba(217,201,201,1) 100%)`}}>
       <div style={{ width: '1100px', margin: '0 auto', height: '100%'}}>
-        <h3 style={{ fontWeight: '500',margin: '0', padding: '20px 0'}}>Chi tiết đơn hàng</h3>
+        <div style={{fontWeight: '500', margin: '0', padding: '20px 0'}}>
+        <span style={{cursor: 'pointer'}} onClick={()=> {navigate('/my-order')}}>Đơn hàng của tôi / </span>  Chi tiết đơn hàng </div>
         <WrapperHeaderUser>
           <WrapperInfoUser>
             <WrapperLabel>Địa chỉ người nhận</WrapperLabel>
