@@ -273,7 +273,7 @@ const ProductDetailComponent = ({idProduct}) => {
                      <WrapperPriceProductDiscounted>{convertPrice(productDetails?.price - (productDetails?.price*productDetails?.discount/100))}</WrapperPriceProductDiscounted>
                    
                    
-                    <WrapperPriceProductDiscount>{convertPrice(productDetails?.price)}</WrapperPriceProductDiscount>
+                    <WrapperPriceProductDiscount>{convertPrice(productDetails?.price)}</WrapperPriceProductDiscount><span style={{    color: 'red',fontSize: '12px', paddingLeft: '10px'}}>- {productDetails?.discount}%</span> 
                     </WrapperPriceProduct>
                     </>
                     :
